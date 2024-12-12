@@ -15,8 +15,12 @@ object WebView {
 
         // flag check
         var currentState = LoginState.NOT_LOGGED_IN
+
         // account test
+        // tài khoản google: testchat098@gmail.com, password : testchat098@aZ
+        // tai khoản chatgpt : testchat089@gmail.com, password : qwer1234@QAZ
         val account = Account("testchat089@gmail.com", "qwer1234@QAZ")
+
         // control
         val webViewHelper = WebViewHelper(webView)
 
