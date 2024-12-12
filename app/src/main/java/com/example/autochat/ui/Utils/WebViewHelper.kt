@@ -28,8 +28,8 @@ class WebViewHelper(private val webView: WebView) {
 //    }
 
     fun onClickLogin() {
+        // nút login có 2 trường hợp là welcome login button và login button
         val script = """
-            
             var loginButton = document.querySelector('button[data-testid="welcome-login-button"]');
             var loginBtn = document.querySelector('button[data-testid="login-button"]');
             
@@ -76,47 +76,53 @@ class WebViewHelper(private val webView: WebView) {
     }
 
     fun onClickContinueForEmail() {
-        val sript = """
-            let button = document.querySelector('.continue-btn');
-            if(button) {
-                button.removeAttribute('disabled');
-                button.click();
-                window.AndroidInterface.sendMessage("ContinueForEmail found!");
-            } else {
-                window.AndroidInterface.sendMessage("ContinueForEmail not found!");
-            }
+        val script = """
+            setTimeout(function() {
+                let button = document.querySelector('.continue-btn');
+                if(button) {
+                    button.removeAttribute('disabled');
+                    button.click();
+                    window.AndroidInterface.sendMessage("ContinueForEmail found!");
+                } else {
+                    window.AndroidInterface.sendMessage("ContinueForEmail not found!");
+                }
+            }, 2000);
 
         """.trimIndent()
-        evaluateJs(sript, CLICK_CONTINUE_FOR_EMAIL)
+        evaluateJs(script, CLICK_CONTINUE_FOR_EMAIL)
     }
 
     fun onClickContinueForPass() {
-        val sript = """
-            let button = document.querySelector('button._button-login-password[data-action-button-primary="true"]');
-            if (button) {
-                button.click();
-                window.AndroidInterface.sendMessage("ContinueForPass found");
-            } else {
-                window.AndroidInterface.sendMessage("ContinueForPass not found.");
-            }
+        val script = """
+            setTimeout(function() {
+                let button = document.querySelector('button._button-login-password[data-action-button-primary="true"]');
+                if (button) {
+                    button.click();
+                    window.AndroidInterface.sendMessage("ContinueForPass found");
+                } else {
+                    window.AndroidInterface.sendMessage("ContinueForPass not found.");
+                }
+            }, 1000);
         """.trimIndent()
-        evaluateJs(sript, CLICK_CONTINUE_FOR_PASS)
+        evaluateJs(script, CLICK_CONTINUE_FOR_PASS)
     }
 
     fun onClickLoginWithGoogle(textNameButton: String) {
         val script = """
-            var buttons = document.querySelectorAll('.social-text');
-            buttons.forEach(function(button) {
-                if (button.textContent.includes('$textNameButton')) {
-                    var parentButton = button.closest('.social-btn');
-                    var clickEvent = new MouseEvent('click', {
-                    bubbles: true,
-                    cancelable: true,
-                    view: window,
-                    });
-                    parentButton.dispatchEvent(clickEvent);
-                }                                                                                                                          
-            });                                                              
+            setTimeout(function() {
+                var buttons = document.querySelectorAll('.social-text');
+                buttons.forEach(function(button) {
+                    if (button.textContent.includes('$textNameButton')) {
+                        var parentButton = button.closest('.social-btn');
+                        var clickEvent = new MouseEvent('click', {
+                            bubbles: true,
+                            cancelable: true,
+                            view: window,
+                        });
+                        parentButton.dispatchEvent(clickEvent);
+                    }
+                });
+            }, 2000);                                                              
         """.trimIndent()
         evaluateJs(script, CLICK_GOOGLE)
     }
