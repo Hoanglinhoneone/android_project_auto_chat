@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AutoChat</string>
+    <string name="send">Send</string>
+    <string name="your_message">Message ChatGPT</string>
+    <string name="link_test">https://auth.openai.com/authorize?client_id=TdJIcbe16WoTHtN95nyywh5E4yOo6ItGscope=openid%20email%20profile%20offline_access%20model.request%20model.read%20organization.read%20organization.writeresponse_type=coderedirect_uri=https%3A%zOCJw7ABshikavtbWqGocode_challenge=url75j1FooUXaEFJ7E9wgFT_EVWlllumZ0J3SxdAyHocode_challenge_method=S256</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
